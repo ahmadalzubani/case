@@ -1,0 +1,484 @@
+You are the lead engineer for a new web game called **CASE** — a cinematic Arabic interactive detective/investigation game.
+
+## 1. PRODUCT VISION
+
+We are building a premium-feeling web experience where players investigate fictional cases.
+
+A case contains:
+
+* A crime/mystery scenario
+* Several suspects
+* Suspect statements and alibis
+* Locations
+* Evidence
+* Timeline events
+* Visual scenes
+* A final accusation and solution
+
+The player should feel like they are opening a real investigation file and solving a mystery, not playing a generic quiz.
+
+The product will eventually support many cases, but in this phase we are building the **foundation only**.
+
+---
+
+# 2. ABSOLUTE PROJECT CONSTRAINTS
+
+These constraints are mandatory:
+
+### ZERO-COST / ZERO-API RULE
+
+* Do NOT use any paid service.
+* Do NOT use any external API.
+* Do NOT use OpenAI, Gemini, Claude API, Firebase, Supabase, or any external backend.
+* Do NOT use external AI services.
+* Do NOT add authentication.
+* Do NOT add payments.
+* Do NOT add analytics services.
+* Do NOT depend on remote data to make the application work.
+
+The application must work entirely from the local codebase.
+
+### DATA
+
+Case data must be designed to come from local JSON/data modules.
+
+Use mocked local data for the first demonstration case.
+
+### STORAGE
+
+Use localStorage only when persistence is necessary.
+
+### IMPORTANT
+
+Do not over-engineer.
+Do not build features that were not requested.
+Do not build a backend.
+Do not create unnecessary abstractions.
+
+---
+
+# 3. TECH STACK
+
+Use:
+
+* React
+* TypeScript
+* Vite
+* CSS
+* Framer Motion for lightweight UI animation
+* Lucide React for icons where useful
+
+Keep dependencies minimal.
+
+Do not introduce another framework unless absolutely necessary.
+
+---
+
+# 4. DESIGN DIRECTION
+
+The visual identity should feel:
+
+* cinematic
+* mysterious
+* premium
+* serious
+* modern
+* dark
+* immersive
+* minimal
+* Arabic-first
+
+Avoid:
+
+* cartoonish game UI
+* childish design
+* generic dashboard design
+* excessive neon
+* excessive glassmorphism
+* casino aesthetics
+* generic AI-app aesthetics
+* clutter
+
+Think:
+
+**classified investigation file + modern cinematic interface**
+
+The experience should feel closer to a digital investigation room than a normal website.
+
+---
+
+# 5. LANGUAGE
+
+The product is Arabic-first.
+
+Use:
+
+* Arabic UI text
+* RTL layout
+* proper Arabic typography
+* Arabic-friendly spacing
+* strong readability
+
+The architecture should still support English later, but do not build a full i18n system in this phase unless it is extremely lightweight.
+
+Use a modern Arabic-compatible Google Font only if necessary for the visual quality. Avoid adding unnecessary font systems.
+
+---
+
+# 6. PROJECT ARCHITECTURE
+
+Create a clean scalable structure similar to:
+
+src/
+app/
+components/
+pages/
+data/
+engine/
+types/
+store/
+assets/
+styles/
+
+Suggested responsibilities:
+
+### types/
+
+Domain models for:
+
+* Case
+* Suspect
+* Evidence
+* Location
+* TimelineEvent
+* Statement
+* Accusation
+* CaseSolution
+
+### data/
+
+Local case data.
+
+### engine/
+
+Pure game logic.
+
+### components/
+
+Reusable presentation components.
+
+### pages/
+
+Page-level screens.
+
+### store/
+
+Minimal client-side state only.
+
+Do not create a complex state management system unless needed.
+
+---
+
+# 7. DOMAIN MODEL
+
+Create strong TypeScript types for the future game system.
+
+At minimum model:
+
+## Case
+
+* id
+* title
+* subtitle
+* difficulty
+* intro
+* coverImage
+* suspects
+* locations
+* evidence
+* timeline
+* solution
+
+## Suspect
+
+* id
+* name
+* age
+* occupation
+* portrait
+* description
+* statement
+* alibi
+* status
+
+## Evidence
+
+* id
+* title
+* type
+* description
+* image
+* discoveredText
+* relatedSuspectIds
+* relatedLocationIds
+* timelineReference
+
+## Location
+
+* id
+* name
+* description
+* image
+* availableEvidenceIds
+
+## TimelineEvent
+
+* id
+* time
+* title
+* description
+* relatedSuspectIds
+* relatedEvidenceIds
+
+## CaseSolution
+
+* culpritId
+* motive
+* method
+* criticalEvidenceIds
+* criticalTimelineEventIds
+
+Do not implement the full deduction engine yet.
+Only establish the domain model cleanly.
+
+---
+
+# 8. FIRST DEMO CASE
+
+Create ONE fictional sample case only.
+
+Temporary title:
+
+**القضية 001 — الغرفة 407**
+
+Create a believable fictional scenario involving:
+
+* 4 suspects
+* 3–5 locations
+* around 8–10 evidence items
+* several timeline events
+* one hidden truth
+
+Important:
+
+The case must be fictional.
+
+Do NOT use real people, real criminal cases, or real-world accusations.
+
+The sample data exists only to demonstrate the architecture.
+
+---
+
+# 9. FIRST UI FOUNDATION
+
+Build the initial visual shell with these screens:
+
+## A. Landing / Home
+
+A cinematic landing screen introducing the product.
+
+Show:
+
+* CASE branding
+* short Arabic tagline
+* featured case card
+* button: "ابدأ التحقيق"
+
+Do not build a full marketplace or case library yet.
+
+## B. Case Introduction
+
+Show:
+
+* case number
+* title
+* difficulty
+* short introduction
+* suspect count
+* evidence count
+* start button
+
+## C. Investigation Shell
+
+Create the basic investigation layout.
+
+It should have clear areas for:
+
+* case header
+* suspect panel
+* locations panel
+* evidence panel
+* timeline area
+
+These can be partially functional placeholders driven by local case data.
+
+The purpose of this phase is to establish the visual and technical foundation.
+
+---
+
+# 10. NAVIGATION
+
+Implement simple client-side navigation between:
+
+Home
+→ Case Introduction
+→ Investigation
+
+Use React Router if needed.
+
+Do not add unnecessary routes.
+
+---
+
+# 11. ANIMATION
+
+Animations should be subtle and cinematic.
+
+Examples:
+
+* page fade
+* slow panel reveal
+* evidence card hover
+* subtle transitions
+* case file opening effect
+* controlled movement
+
+Avoid:
+
+* excessive bouncing
+* flashy effects
+* constant animation
+* performance-heavy effects
+
+The animation system must remain lightweight.
+
+---
+
+# 12. RESPONSIVENESS
+
+The application must work on:
+
+* desktop
+* laptop
+* tablet
+* mobile
+
+Desktop is the primary experience.
+
+Do not create separate mobile architecture.
+Use responsive layout.
+
+---
+
+# 13. ACCESSIBILITY / QUALITY
+
+Implement the foundation with:
+
+* semantic HTML
+* keyboard-friendly buttons
+* visible focus states
+* readable contrast
+* responsive layouts
+* no console errors
+
+Do not sacrifice usability for visual effects.
+
+---
+
+# 14. IMPORTANT ENGINEERING RULES
+
+### Do NOT:
+
+* rewrite the entire project repeatedly
+* create fake backend systems
+* create API wrappers
+* add authentication
+* add unnecessary packages
+* hardcode all UI into one giant component
+* create one 1000-line file
+* duplicate case logic inside components
+* put business logic directly inside visual components
+
+### DO:
+
+* keep data separate from UI
+* keep game logic separate from UI
+* use reusable components
+* use strong TypeScript typing
+* keep components reasonably small
+* make the foundation easy for another AI coding agent to take over later
+
+---
+
+# 15. DEFINITION OF DONE FOR THIS PROMPT
+
+When finished, we should have:
+
+1. A running React + TypeScript + Vite application.
+2. A polished Arabic RTL visual foundation.
+3. A working Home screen.
+4. A working Case Introduction screen.
+5. A working Investigation Shell.
+6. Strong TypeScript domain models.
+7. One local JSON/data-driven sample case.
+8. Basic navigation.
+9. Lightweight animations.
+10. Responsive layout.
+11. No external APIs.
+12. No backend.
+13. No authentication.
+14. No paid services.
+15. No unnecessary dependencies.
+16. No TypeScript errors.
+17. No console errors.
+
+---
+
+# 16. VERY IMPORTANT WORKFLOW
+
+Before writing code:
+
+1. Inspect the existing Replit workspace.
+2. Determine whether a project already exists.
+3. If necessary, initialize the project.
+4. Think through the architecture.
+5. Create the smallest clean implementation that satisfies this specification.
+
+Do NOT jump ahead and build the full game.
+
+Do NOT implement:
+
+* final deduction system
+* advanced investigation board
+* multiplayer
+* leaderboards
+* accounts
+* cloud database
+* social features
+* monetization
+* admin dashboard
+* AI generation
+
+Those will be future phases.
+
+At the end:
+
+* run the app
+* run TypeScript/build checks
+* fix all errors
+* verify the main navigation flow
+* provide a concise summary of what was implemented
+* list the important files created
+* list any remaining limitations
+
+The codebase will later be moved to GitHub and continued in another AI development environment, so prioritize **clean architecture, maintainability, and explicit separation of data, game logic, and UI**.

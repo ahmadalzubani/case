@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CASE — الغرفة 407"
+description = "A cinematic Arabic-first detective investigation game foundation. Explore one fictional case through a landing page, case briefing, and responsive investigation room powered entirely by local data."
+version = "1.0.0"
+id = "artifacts/case-game"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23350
+
+[services.development]
+run = "pnpm --filter @workspace/case-game run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/case-game", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/case-game/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23350"
+BASE_PATH = "/"

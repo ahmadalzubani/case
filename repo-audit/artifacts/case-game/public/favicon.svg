@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background: hsl(218 28% 8%) -->
+  <rect width="32" height="32" fill="#0F131A"/>
+  <!-- Gold border: hsl(41 62% 61%) -->
+  <rect x="1.5" y="1.5" width="29" height="29" stroke="#D9B25E" stroke-width="1.5"/>
+  <!-- Bottom-left corner accent block (mirrors CaseLogo) -->
+  <rect x="1.5" y="26" width="6" height="4.5" fill="#D9B25E"/>
+  <!-- Crosshair arms -->
+  <line x1="16" y1="7"  x2="16" y2="12" stroke="#D9B25E" stroke-width="1.5"/>
+  <line x1="16" y1="20" x2="16" y2="25" stroke="#D9B25E" stroke-width="1.5"/>
+  <line x1="7"  y1="16" x2="12" y2="16" stroke="#D9B25E" stroke-width="1.5"/>
+  <line x1="20" y1="16" x2="25" y2="16" stroke="#D9B25E" stroke-width="1.5"/>
+  <!-- Center target -->
+  <rect x="13.5" y="13.5" width="5" height="5" stroke="#D9B25E" stroke-width="1.5"/>
+</svg>

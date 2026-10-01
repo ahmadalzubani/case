@@ -1,0 +1,464 @@
+We now have the foundation for CASE and the first fictional case is rendering correctly.
+
+Do NOT rebuild the application.
+Do NOT change the visual identity unnecessarily.
+Do NOT introduce any backend, API, authentication, database, AI service, or paid dependency.
+
+This phase is about turning the existing investigation shell into a **real playable investigation loop**.
+
+# PRIMARY GOAL
+
+The player must be able to investigate the case instead of merely browsing information.
+
+The player should:
+
+1. Inspect suspects.
+2. Inspect locations.
+3. Examine evidence.
+4. Discover clues.
+5. Review timeline events.
+6. Add important findings to a personal investigation notebook.
+7. Form a theory.
+8. Make a final accusation.
+9. Receive a result based on the evidence they discovered.
+
+The player should NOT be told the solution while investigating.
+
+---
+
+# 1. EVIDENCE INTERACTION
+
+Upgrade the existing evidence system.
+
+Every evidence item must have:
+
+* id
+* title
+* type
+* location
+* short description
+* detailed inspection text
+* discoverable clues
+* related suspects
+* related timeline events
+* importance level
+
+When the player opens evidence:
+
+Show:
+
+### Evidence File
+
+* title
+* location
+* visual
+* description
+* "Inspect evidence" interaction
+
+After inspection, reveal additional information.
+
+Example:
+
+Initial:
+
+> "ساعة جيب متوقفة."
+
+After inspection:
+
+> "الساعة توقفت عند 02:12."
+
+The important clue should not always be visible immediately.
+
+Add a lightweight "investigated" state.
+
+---
+
+# 2. SUSPECT INTERACTION
+
+Suspect cards should allow the player to open a complete suspect file.
+
+Each suspect should display:
+
+* portrait
+* name
+* occupation
+* known information
+* statement
+* alibi
+* relevant timeline information
+* discovered contradictions, if any
+
+Do NOT expose contradictions automatically.
+
+A contradiction should only become visible when the player has inspected the related evidence or timeline event.
+
+Example:
+
+Suspect:
+
+> "كنت في الاستقبال الساعة 02:10."
+
+Evidence:
+
+> Camera log places them elsewhere.
+
+Only after the player has investigated both should the UI identify a possible contradiction.
+
+---
+
+# 3. LOCATIONS
+
+Make locations interactive.
+
+When a location is opened, show:
+
+* location image/illustration
+* description
+* available evidence
+* discovered evidence
+* subtle environmental details
+
+Each location should feel like a scene in the investigation.
+
+Do not create a complex 3D engine.
+
+Use lightweight visual presentation.
+
+---
+
+# 4. TIMELINE
+
+Upgrade the current timeline.
+
+The player must be able to inspect timeline events.
+
+Each event should show:
+
+* time
+* title
+* description
+* related evidence
+* related suspects
+* related locations
+
+Important:
+
+Do not reveal hidden relationships immediately.
+
+Relationships become available after relevant evidence is inspected.
+
+---
+
+# 5. INVESTIGATION NOTEBOOK
+
+The notebook must become functional.
+
+The player can add:
+
+* evidence
+* suspects
+* timeline events
+* discovered clues
+
+into their notebook.
+
+Create sections:
+
+### الأدلة
+
+### المشتبه بهم
+
+### التناقضات
+
+### خط الزمن
+
+### ملاحظاتي
+
+Use local state/localStorage.
+
+The notebook must survive a page refresh.
+
+Do NOT create a backend.
+
+---
+
+# 6. CONNECTION / DEDUCTION SYSTEM
+
+Create a lightweight deduction system.
+
+The player should be able to connect:
+
+Evidence
+↔ Suspect
+
+Evidence
+↔ Timeline
+
+Evidence
+↔ Location
+
+Suspect
+↔ Timeline
+
+For example:
+
+[سجل المراقبة]
+↓
+[02:10]
+↓
+[المشتبه به 03]
+
+The system should not automatically solve the entire case.
+
+Instead, it should allow the player to build a theory.
+
+---
+
+# 7. CASE PROGRESS
+
+Add a subtle investigation progress indicator.
+
+Example:
+
+## تقدم التحقيق
+
+6 / 10 أدلة مفحوصة
+3 / 7 أحداث تمت مراجعتها
+2 تناقضات مكتشفة
+
+Do NOT turn it into a generic game XP bar.
+
+It should feel like an investigation status panel.
+
+---
+
+# 8. ACCUSATION FLOW
+
+Create a final accusation screen.
+
+When the player chooses:
+
+### المشتبه به
+
+### الدافع
+
+### طريقة التنفيذ
+
+### التوقيت
+
+then allow:
+
+**تقديم الاتهام**
+
+Do not show this option prominently during the investigation.
+
+It should feel like the investigator is submitting a conclusion.
+
+---
+
+# 9. SOLUTION CHECKING
+
+Create a local deterministic solution checker.
+
+The CaseSolution should define:
+
+* culpritId
+* motive
+* method
+* criticalEvidenceIds
+* criticalTimelineEventIds
+
+The result should compare the player's accusation with the official solution.
+
+Create three possible outcomes:
+
+### 🟢 حل ممتاز
+
+The player correctly identified the critical elements.
+
+### 🟡 حل جزئي
+
+The culprit is correct but important reasoning is missing.
+
+### 🔴 اتهام خاطئ
+
+The player accused the wrong person or built an incorrect theory.
+
+Never reveal the complete solution before the accusation.
+
+---
+
+# 10. CASE REVEAL
+
+After the accusation, show:
+
+## الحقيقة
+
+Reveal the real sequence of events step by step.
+
+For example:
+
+02:03
+→ suspect enters
+
+02:10
+→ camera interruption
+
+02:12
+→ critical event
+
+02:17
+→ door opens
+
+...
+
+Then explain which evidence proves each part.
+
+This is extremely important.
+
+The player should be able to understand:
+
+**"آه! هاد الدليل كان يقودني لهون."**
+
+---
+
+# 11. SCORING
+
+Do NOT use arcade-style scoring.
+
+Instead calculate an investigation result based on:
+
+* correct culprit
+* correct motive
+* correct method
+* critical evidence discovered
+* critical timeline events discovered
+* contradictions discovered
+
+Show something like:
+
+## تقرير المحقق
+
+المشتبه به الصحيح ✓
+الدافع الصحيح ✓
+الدليل الحاسم ✓
+التناقضات المكتشفة 2/3
+
+### تقييم التحقيق
+
+**محقق ممتاز**
+
+This score must be deterministic and based entirely on local case data.
+
+---
+
+# 12. MOBILE
+
+Keep all new interactions responsive.
+
+The investigation should remain usable on mobile.
+
+Do not redesign the whole application.
+
+---
+
+# 13. PERFORMANCE
+
+Keep the implementation lightweight.
+
+Avoid:
+
+* heavy canvas
+* WebGL
+* video backgrounds
+* large animation libraries
+* excessive blur
+* unnecessary re-renders
+
+Use CSS and the existing animation system where possible.
+
+---
+
+# 14. DATA ARCHITECTURE
+
+Do not hardcode the new logic into individual components.
+
+The case should drive the experience.
+
+The game engine should work from generic case data.
+
+The goal is:
+
+Case 001
+↓
+same engine
+↓
+Case 002
+↓
+same engine
+↓
+Case 003
+
+No case-specific UI hacks.
+
+---
+
+# 15. IMPORTANT ENGINEERING RULE
+
+Before changing anything:
+
+1. Inspect the current implementation.
+2. Reuse the existing architecture.
+3. Identify the smallest set of changes required.
+4. Implement incrementally.
+5. Do not rewrite working components unnecessarily.
+
+---
+
+# 16. DEFINITION OF DONE
+
+When complete:
+
+* The player can inspect evidence.
+* The player can inspect suspects.
+* The player can inspect locations.
+* The player can inspect timeline events.
+* Important clues reveal progressively.
+* The notebook works.
+* Investigation progress updates.
+* Relationships between clues can be tracked.
+* The player can submit an accusation.
+* The system checks the accusation.
+* The official truth is revealed only after submission.
+* The player receives a deterministic investigation result.
+* Progress survives refresh using localStorage.
+* No API.
+* No backend.
+* No authentication.
+* No paid services.
+* No TypeScript errors.
+* No console errors.
+* Production build succeeds.
+
+After implementation, run the complete application in the browser and manually test the full flow:
+
+HOME
+→ CASE BRIEFING
+→ INVESTIGATION
+→ INSPECT EVIDENCE
+→ INSPECT SUSPECT
+→ REVIEW TIMELINE
+→ NOTEBOOK
+→ ACCUSATION
+→ REVEAL
+→ RESULT
+
+At the end, report:
+
+* what changed
+* important files modified
+* validation results
+* any known limitations
+
+Do NOT start another feature after this phase.
+Stop after this phase is complete.

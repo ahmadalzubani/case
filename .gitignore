@@ -1,0 +1,12 @@
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.cache/
+**/.cache/
+.local/
+**/.local/
+*.tsbuildinfo
+Thumbs.db
+.DS_Store
+*.log

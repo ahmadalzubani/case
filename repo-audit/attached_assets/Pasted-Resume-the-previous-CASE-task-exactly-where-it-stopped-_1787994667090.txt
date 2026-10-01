@@ -1,0 +1,179 @@
+Resume the previous CASE task exactly where it stopped.
+
+IMPORTANT:
+This is NOT a new feature phase.
+Do NOT add new gameplay features.
+Do NOT redesign the application.
+Do NOT rewrite working code.
+
+The previous implementation completed the main investigation loop, but the final browser verification exposed a runtime issue related to old or malformed localStorage data in the investigation notebook.
+
+Your ONLY goal now is to finish and verify the previous phase.
+
+# 1. FIX THE RUNTIME ISSUE
+
+Inspect the current notebook persistence implementation and the exact browser/runtime error.
+
+The application must safely handle:
+
+* old notebook data from previous versions
+* malformed localStorage values
+* missing notebook fields
+* invalid IDs
+* unexpected data types
+* partially saved state
+
+The investigation screen must never crash because of localStorage data.
+
+Implement a safe persistence boundary:
+
+1. Read localStorage safely.
+2. Parse inside try/catch.
+3. Validate the stored structure.
+4. Normalize missing/invalid fields.
+5. Fall back to a clean empty notebook when invalid.
+6. Never allow malformed persisted state to break rendering.
+
+Do not delete or reset valid current user progress unnecessarily.
+
+# 2. DO NOT CHANGE THE DOMAIN MODEL UNLESS REQUIRED
+
+The existing data model and investigation engine are already implemented.
+
+Reuse them.
+
+Do not redesign:
+
+* Case
+* Suspect
+* Evidence
+* Location
+* TimelineEvent
+* CaseSolution
+* accusation logic
+* scoring logic
+* reveal logic
+
+Only patch what is necessary for the persistence/runtime issue.
+
+# 3. FULL BROWSER VERIFICATION
+
+After the fix, start/restart the preview and manually test the complete user flow:
+
+HOME
+→ CASE BRIEFING
+→ INVESTIGATION
+→ OPEN SUSPECT
+→ OPEN LOCATION
+→ INSPECT MULTIPLE EVIDENCE ITEMS
+→ REVEAL PROGRESSIVE CLUES
+→ REVIEW TIMELINE
+→ ADD ITEMS TO NOTEBOOK
+→ REFRESH PAGE
+→ VERIFY NOTEBOOK PERSISTS
+→ CREATE/VIEW CONNECTIONS
+→ OPEN ACCUSATION
+→ SUBMIT A VALID ACCUSATION
+→ VIEW RESULT
+→ VIEW OFFICIAL REVEAL
+
+Also test an incorrect accusation path.
+
+# 4. PERSISTENCE TEST
+
+Explicitly test the localStorage boundary.
+
+Test at minimum:
+
+### Test A
+
+Fresh browser/localStorage:
+
+* application loads correctly
+* notebook starts empty
+
+### Test B
+
+Valid saved notebook:
+
+* reload
+* notebook remains intact
+
+### Test C
+
+Malformed saved notebook:
+
+* application does not crash
+* clean fallback state is used
+
+### Test D
+
+Old/incompatible saved notebook shape:
+
+* application does not crash
+* state is normalized or safely reset
+
+# 5. ERROR CHECKS
+
+Run:
+
+* TypeScript/type check
+* production build
+* browser/runtime verification
+
+Confirm:
+
+* no TypeScript errors
+* no build errors
+* no application console errors
+* no broken routes
+* no blank investigation screen
+* no fatal runtime exceptions
+
+# 6. RESPONSIVE SANITY CHECK
+
+Quickly verify the existing investigation experience on:
+
+* desktop
+* mobile-sized viewport
+
+Do NOT redesign either layout.
+
+# 7. STOP CONDITION
+
+Once the runtime persistence issue is fixed and the complete flow passes:
+
+STOP.
+
+Do not add:
+
+* multiplayer
+* leaderboards
+* accounts
+* backend
+* database
+* APIs
+* AI
+* monetization
+* admin system
+* extra cases
+* social features
+* advanced animations
+
+This phase is considered complete only after the browser verification passes.
+
+# 8. FINAL REPORT
+
+At the end, report only:
+
+1. The runtime issue that was found.
+2. How it was fixed.
+3. Files changed.
+4. TypeScript result.
+5. Production build result.
+6. Browser verification result.
+7. Whether the full flow passed.
+
+Create a final checkpoint after everything passes.
+
+Do NOT start another task after the checkpoint.

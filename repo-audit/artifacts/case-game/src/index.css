@@ -1,0 +1,923 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+
+  /* Automatic computation of border around primary / danger buttons */
+  --opaque-button-border-intensity: -8; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  --background: 218 28% 8%;
+
+  --foreground: 42 24% 89%;
+
+  --border: 216 18% 20%;
+
+  --card: 218 24% 11%;
+
+  --card-foreground: 42 24% 89%;
+
+  --card-border: 216 18% 20%;
+
+  --sidebar: 220 25% 10%;
+
+  --sidebar-foreground: 42 24% 89%;
+
+  --sidebar-border: 216 18% 20%;
+
+  --sidebar-primary: 41 62% 61%;
+
+  --sidebar-primary-foreground: 218 28% 8%;
+
+  --sidebar-accent: 217 20% 16%;
+
+  --sidebar-accent-foreground: 42 24% 89%;
+
+  --sidebar-ring: 41 62% 61%;
+
+  --popover: 218 24% 11%;
+
+  --popover-foreground: 42 24% 89%;
+
+  --popover-border: 216 18% 20%;
+
+  --primary: 41 62% 61%;
+
+  --primary-foreground: 218 28% 8%;
+
+  --secondary: 217 20% 16%;
+
+  --secondary-foreground: 42 24% 89%;
+
+  --muted: 217 20% 16%;
+
+  --muted-foreground: 216 12% 58%;
+
+  --accent: 351 41% 48%;
+
+  --accent-foreground: 42 24% 94%;
+
+  --destructive: 351 58% 43%;
+
+  --destructive-foreground: 42 24% 94%;
+
+  --input: 216 18% 20%;
+  --ring: 41 62% 61%;
+  --chart-1: 41 62% 61%;
+  --chart-2: 351 41% 48%;
+  --chart-3: 184 38% 43%;
+  --chart-4: 216 12% 58%;
+  --chart-5: 31 49% 56%;
+
+  --app-font-sans: 'Cairo', 'Tajawal', 'Noto Kufi Arabic', system-ui, sans-serif;
+  --app-font-serif: 'Cairo', 'Space Grotesk', system-ui, sans-serif;
+  --app-font-mono: 'IBM Plex Mono', monospace;
+  --radius: 0.5rem; /* 8px */
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  /* Automatically computed borders - intensity can be controlled by the user by the --opaque-button-border-intensity setting */
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(
+    from hsl(var(--sidebar-primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(
+    from hsl(var(--sidebar-accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(
+    from hsl(var(--primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(
+    from hsl(var(--secondary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(
+    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
+      alpha
+  );
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(
+    from hsl(var(--accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(
+    from hsl(var(--destructive)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+
+  --opaque-button-border-intensity: 9; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  --background: 218 28% 8%;
+
+  --foreground: 42 24% 89%;
+
+  --border: 216 18% 20%;
+
+  --card: 218 24% 11%;
+
+  --card-foreground: 42 24% 89%;
+
+  --card-border: 216 18% 20%;
+
+  --sidebar: 220 25% 10%;
+
+  --sidebar-foreground: 42 24% 89%;
+
+  --sidebar-border: 216 18% 20%;
+
+  --sidebar-primary: 41 62% 61%;
+
+  --sidebar-primary-foreground: 218 28% 8%;
+
+  --sidebar-accent: 217 20% 16%;
+
+  --sidebar-accent-foreground: 42 24% 89%;
+
+  --sidebar-ring: 41 62% 61%;
+
+  --popover: 218 24% 11%;
+
+  --popover-foreground: 42 24% 89%;
+
+  --popover-border: 216 18% 20%;
+
+  --primary: 41 62% 61%;
+
+  --primary-foreground: 218 28% 8%;
+
+  --secondary: 217 20% 16%;
+
+  --secondary-foreground: 42 24% 89%;
+
+  --muted: 217 20% 16%;
+
+  --muted-foreground: 216 12% 58%;
+
+  --accent: 351 41% 48%;
+
+  --accent-foreground: 42 24% 94%;
+
+  --destructive: 351 58% 43%;
+
+  --destructive-foreground: 42 24% 94%;
+
+  /* Used as the border around inputs. Dark mode: Should be a border that is light enough to have high contrast when rendered on a --card background. More contrast than standard --border */
+  --input: 216 18% 20%;
+  --ring: 41 62% 61%;
+  --chart-1: 41 62% 61%;
+  --chart-2: 351 41% 48%;
+  --chart-3: 184 38% 43%;
+  --chart-4: 216 12% 58%;
+  --chart-5: 31 49% 56%;
+
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/**
+ * Using the elevate system.
+ * Automatic contrast adjustment.
+ *
+ * <element className="hover-elevate" />
+ * <element className="active-elevate-2" />
+ *
+ * // Using the tailwind utility when a data attribute is "on"
+ * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
+ * // Or manually controlling the toggle state
+ * <element className="toggle-elevate toggle-elevated" />
+ *
+ * Elevation systems have to handle many states.
+ * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
+ * - toggled or not
+ * - focused or not (this is not handled with these utilities)
+ *
+ * Even without handling focused or not, this is six possible combinations that
+ * need to be distinguished from eachother visually.
+ */
+@layer utilities {
+  /* Hide ugly search cancel button in Chrome until we can style it properly */
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  /* Placeholder styling for contentEditable div */
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {
+  }
+
+  .no-default-active-elevate {
+  }
+
+  /**
+   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
+   * This way they can stack/compound. Both will overlap the parent's borders!
+   * So borders will be automatically adjusted both on toggle, and hover/active,
+   * and they will be compounded.
+   */
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: -1;
+    /* sits behind content but above backdrop */
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  /* Does not work on elements with overflow:hidden! */
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: 999;
+    /* sits in front of content */
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: hsl(var(--background));
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 16% 6%, hsl(214 32% 16% / 0.35), transparent 28rem),
+    hsl(var(--background));
+  font-family: var(--app-font-sans);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  pointer-events: none;
+  opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+button, a, input, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--app-font-serif);
+}
+
+.font-mono-case {
+  font-family: var(--app-font-mono);
+  letter-spacing: .08em;
+}
+
+.case-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+}
+
+.case-grid {
+  background-image:
+    linear-gradient(hsl(var(--foreground) / .035) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / .035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.case-card {
+  border: 1px solid hsl(var(--border) / .9);
+  background: linear-gradient(145deg, hsl(var(--card) / .96), hsl(217 25% 8% / .9));
+  box-shadow: 0 20px 60px hsl(220 32% 3% / .24);
+}
+
+.case-stamp {
+  border: 1px solid hsl(var(--primary) / .65);
+  color: hsl(var(--primary));
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.case-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.case-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.case-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / .35);
+  border-radius: 999px;
+}
+
+.room-lines {
+  background:
+    linear-gradient(90deg, transparent 49.5%, hsl(var(--primary) / .12) 50%, transparent 50.5%),
+    linear-gradient(0deg, transparent 49.5%, hsl(var(--primary) / .12) 50%, transparent 50.5%);
+  background-size: 100% 100%, 100% 100%;
+}
+
+@keyframes case-reveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.case-reveal {
+  animation: case-reveal .7s cubic-bezier(.22,1,.36,1) both;
+}
+
+.case-reveal-delay-1 { animation-delay: .1s; }
+.case-reveal-delay-2 { animation-delay: .2s; }
+.case-reveal-delay-3 { animation-delay: .3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ==========================================================================
+   Investigation Board & Manila File Card Aesthetics
+   ========================================================================== */
+
+/* Dark Corkboard / Blueprint Investigation Texture */
+.corkboard-canvas {
+  background-color: #0d1017;
+  background-image:
+    radial-gradient(ellipse at 50% 15%, rgba(28, 35, 48, 0.6) 0%, rgba(9, 11, 15, 0.98) 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(190, 150, 95, 0.025) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(190, 150, 95, 0.025) 40px),
+    radial-gradient(circle at 15% 25%, rgba(200, 160, 90, 0.02) 0%, transparent 10%),
+    radial-gradient(circle at 85% 75%, rgba(200, 160, 90, 0.02) 0%, transparent 10%);
+}
+
+/* Blueprint Line Grid */
+.blueprint-subtle-grid {
+  background-image:
+    linear-gradient(to right, rgba(190, 150, 95, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(190, 150, 95, 0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Manila File Dossier Card */
+.manila-card {
+  position: relative;
+  border: 1px solid rgba(185, 145, 95, 0.22);
+  background: linear-gradient(175deg, #161a22 0%, #101318 100%);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(185, 145, 95, 0.08);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.manila-card:hover {
+  border-color: rgba(212, 168, 83, 0.6);
+  box-shadow: 0 14px 34px -6px rgba(0, 0, 0, 0.8), 0 0 24px -4px rgba(212, 168, 83, 0.18);
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+/* Thumbtack / Pin Marker */
+.thumbtack-pin {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e8c072, #946920);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Warning Red Line / Discrepancy Highlight */
+.red-caution-tag {
+  background-color: rgba(220, 38, 38, 0.08);
+  border-right: 2px solid #ef4444;
+  padding-right: 0.6rem;
+}
+
+/* Amber Interactive Glow for buttons */
+.amber-interactive-glow {
+  box-shadow: 0 0 18px rgba(212, 168, 83, 0.25);
+}
+
+/* ==========================================================================
+   Phase 2B-1: Visual Materiality & Skeuomorphic Aesthetics
+   ========================================================================== */
+
+/* Realistic Noir Corkboard with Warm Desk Lamp Vignette */
+.detective-corkboard-canvas {
+  background-color: #120e0a;
+  background-image:
+    /* Overhead desk lamp warm pool of light (Vignette) */
+    radial-gradient(ellipse 65% 55% at 50% 42%, rgba(245, 190, 110, 0.16) 0%, rgba(55, 38, 26, 0.5) 45%, rgba(12, 9, 7, 0.95) 90%),
+    /* Corkboard Granular Particles (Procedural Cork Texture) */
+    radial-gradient(circle at 50% 50%, rgba(185, 135, 80, 0.12) 1.5px, transparent 1.6px),
+    radial-gradient(circle at 25% 75%, rgba(110, 75, 45, 0.14) 1.5px, transparent 1.6px),
+    radial-gradient(circle at 75% 25%, rgba(85, 55, 30, 0.16) 2px, transparent 2.2px),
+    /* Cork fiber noise weave */
+    linear-gradient(45deg, rgba(35, 25, 18, 0.3) 25%, transparent 25%, transparent 75%, rgba(35, 25, 18, 0.3) 75%),
+    linear-gradient(-45deg, rgba(25, 18, 12, 0.3) 25%, transparent 25%, transparent 75%, rgba(25, 18, 12, 0.3) 75%);
+  background-size: 100% 100%, 14px 14px, 18px 18px, 22px 22px, 32px 32px, 32px 32px;
+  background-position: 0 0, 0 0, 7px 7px, 11px 11px, 0 0, 16px 16px;
+  box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.88);
+}
+
+/* Authentic Polaroid Suspect Card */
+.polaroid-card {
+  background: #fbf9f4;
+  color: #1a1a1a;
+  border: 1px solid #dcd7cb;
+  border-radius: 2px;
+  box-shadow:
+    0 10px 25px -4px rgba(0, 0, 0, 0.65),
+    0 2px 6px -1px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(230, 220, 200, 0.2);
+  transition: box-shadow 0.2s ease;
+}
+
+.polaroid-photo-viewport {
+  background-color: #17181c;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 10px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.65) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.85);
+}
+
+/* Authentic Manila Evidence Dossier Card */
+.manila-evidence-card {
+  background: #f4ead5;
+  background-image:
+    linear-gradient(175deg, #f7efe0 0%, #ede1c6 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(140, 100, 50, 0.03) 20px);
+  color: #1c1917;
+  border: 1px solid #d4c49d;
+  border-radius: 1px;
+  box-shadow:
+    0 10px 24px -5px rgba(0, 0, 0, 0.65),
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: box-shadow 0.2s ease;
+}
+
+/* Timeline Ticker-Tape Dispatch Card */
+.timeline-dispatch-card {
+  background: #fcf8eb;
+  background-image: repeating-linear-gradient(90deg, #fcf8eb, #fcf8eb 24px, #f5eed3 25px);
+  color: #291e0b;
+  border: 1px dashed #d1c08e;
+  border-radius: 1px;
+  box-shadow:
+    0 8px 20px -4px rgba(0, 0, 0, 0.6),
+    0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Location Blueprint Card */
+.location-blueprint-card {
+  background: #0d1e2e;
+  background-image:
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 14px 14px;
+  color: #e0f2fe;
+  border: 1px solid #1e3a5f;
+  border-radius: 1px;
+  box-shadow:
+    0 10px 24px -5px rgba(0, 0, 0, 0.65),
+    0 0 15px rgba(2, 132, 199, 0.1);
+}
+
+/* Physical 3D Thumbtack Pins - Strictly Non-relative, Piercing Top Margin */
+.thumbtack-3d-red {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff6b6b 0%, #d32f2f 55%, #7f0000 100%);
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+}
+
+.thumbtack-3d-red::after {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 3px;
+  width: 10px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  filter: blur(1.5px);
+  z-index: -1;
+}
+
+.thumbtack-3d-brass {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe082 0%, #c49126 55%, #634305 100%);
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}
+
+.thumbtack-3d-brass::after {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 3px;
+  width: 10px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  filter: blur(1.5px);
+  z-index: -1;
+}
+
+/* Distressed Red Ink Rubber Stamp for Discovered Contradictions */
+.rubber-stamp-verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.65rem;
+  font-family: var(--app-font-mono);
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #dc2626;
+  border: 3px double #dc2626;
+  border-radius: 3px;
+  transform: rotate(-12deg);
+  opacity: 0.92;
+  box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.2);
+  background-color: rgba(220, 38, 38, 0.05);
+  text-shadow: 0 0 1px rgba(220, 38, 38, 0.3);
+  pointer-events: none;
+}
+
+/* Faint Amber Rubber Stamp for Pending Hypotheses */
+.rubber-stamp-pending {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.5rem;
+  font-family: var(--app-font-mono);
+  font-weight: 800;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d97706;
+  border: 2px dashed #d97706;
+  border-radius: 2px;
+  transform: rotate(8deg);
+  opacity: 0.85;
+  background-color: rgba(217, 119, 6, 0.06);
+  pointer-events: none;
+}
+
+/* =========================================================
+   PHASE 3 TACTILE SKEUOMORPHISM & CLUEPATH TEXTURES
+   ========================================================= */
+
+.paper-texture {
+  background-color: #e9dfc6;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255, 250, 235, 0.55), transparent 55%),
+    radial-gradient(ellipse at 85% 95%, rgba(120, 90, 40, 0.22), transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.15  0 0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
+}
+
+.manila-texture {
+  background-color: #c8a466;
+  background-image:
+    linear-gradient(160deg, rgba(255, 235, 190, 0.35), transparent 40%),
+    radial-gradient(ellipse at 90% 90%, rgba(80, 50, 15, 0.35), transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.05  0 0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23m)'/></svg>");
+}
+
+.leather-texture {
+  background-color: #15110d;
+  background-image:
+    radial-gradient(ellipse at 30% 0%, rgba(120, 70, 40, 0.28), transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='l'><feTurbulence type='turbulence' baseFrequency='0.55' numOctaves='3'/><feColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0 0.02  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23l)'/></svg>");
+}
+
+.desk-vignette {
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+.shadow-tactile {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.15) inset,
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 18px 40px -12px rgba(0, 0, 0, 0.9);
+}
+
+.shadow-lifted {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 30px 60px -15px rgba(0, 0, 0, 0.95),
+    0 10px 24px -8px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes lamp-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.65; }
+  94% { opacity: 1; }
+  97% { opacity: 0.82; }
+}
+
+.animate-flicker {
+  animation: lamp-flicker 6s infinite;
+}
+
+@keyframes stamp-slam {
+  0% {
+    opacity: 0;
+    transform: scale(2) rotate(var(--stamp-rot, -12deg));
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.94) rotate(var(--stamp-rot, -12deg));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--stamp-rot, -12deg));
+  }
+}
+
+.animate-stamp-in {
+  animation: stamp-slam 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(179, 25, 44, 0.55), 0 10px 30px -5px rgba(179, 25, 44, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(179, 25, 44, 0), 0 15px 40px -4px rgba(179, 25, 44, 0.7);
+    transform: scale(1.02);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2.4s ease-in-out infinite;
+}
+
+/* =========================================================
+   PHASE 4: ACCUSATION & TRIAL CLIMAX STYLES
+   ========================================================= */
+
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-4px, 2px) rotate(-0.5deg); }
+  20%, 40%, 60%, 80% { transform: translate(4px, -2px) rotate(0.5deg); }
+}
+
+.animate-shake {
+  animation: screen-shake 0.3s ease-in-out infinite;
+}
+
+@keyframes pulse-blood-vignette {
+  0%, 100% {
+    box-shadow: inset 0 0 100px 30px rgba(136, 19, 30, 0.45), inset 0 0 200px 80px rgba(0, 0, 0, 0.92);
+  }
+  50% {
+    box-shadow: inset 0 0 160px 60px rgba(185, 28, 28, 0.7), inset 0 0 260px 110px rgba(0, 0, 0, 0.98);
+  }
+}
+
+.pulsing-blood-vignette {
+  animation: pulse-blood-vignette 3.8s ease-in-out infinite;
+}
+
+.noir-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3) 0px,
+    rgba(0, 0, 0, 0.3) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+.warrant-paper {
+  background-color: #f4edd9;
+  background-image:
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.4), transparent 85%),
+    radial-gradient(ellipse at 15% 15%, rgba(160, 120, 60, 0.14), transparent 50%),
+    radial-gradient(ellipse at 85% 85%, rgba(140, 90, 40, 0.2), transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.23  0 0 0 0 0.12  0 0 0 0 0.15 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
+  box-shadow:
+    0 0 0 1px rgba(60, 40, 20, 0.3),
+    0 25px 60px -12px rgba(0, 0, 0, 0.95),
+    0 0 80px rgba(150, 20, 30, 0.25);
+}
+

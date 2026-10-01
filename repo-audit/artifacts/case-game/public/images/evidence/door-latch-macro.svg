@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <!-- Dark Metallic Gradient for Door Frame -->
+    <linearGradient id="doorFrame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14181c"/>
+      <stop offset="50%" stop-color="#0b0d0f"/>
+      <stop offset="100%" stop-color="#050607"/>
+    </linearGradient>
+
+    <!-- Heavy Aged Steel Gradient for Lock Body -->
+    <linearGradient id="metalLatch" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a3036"/>
+      <stop offset="35%" stop-color="#47525d"/>
+      <stop offset="70%" stop-color="#21272d"/>
+      <stop offset="100%" stop-color="#121619"/>
+    </linearGradient>
+
+    <!-- Brass / Bronze Catch Mechanism -->
+    <linearGradient id="brassCatch" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#544128"/>
+      <stop offset="50%" stop-color="#7a5f36"/>
+      <stop offset="100%" stop-color="#3d2e1b"/>
+    </linearGradient>
+
+    <!-- Vignette Radial -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.85"/>
+    </radialGradient>
+
+    <!-- Technical Grid Pattern -->
+    <pattern id="forensicGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#222830" stroke-width="0.75" stroke-opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="800" fill="url(#doorFrame)"/>
+  <rect width="1200" height="800" fill="url(#forensicGrid)"/>
+
+  <!-- Technical Markings & Calibration Lines -->
+  <g stroke="#3a4450" stroke-width="1" stroke-dasharray="4,4" opacity="0.4">
+    <line x1="600" y1="50" x2="600" y2="750"/>
+    <line x1="100" y1="400" x2="1100" y2="400"/>
+    <circle cx="600" cy="400" r="280" fill="none"/>
+    <circle cx="600" cy="400" r="320" fill="none"/>
+  </g>
+
+  <!-- Heavy Door Crack / Gap (Top Door Clearance) -->
+  <rect x="250" y="140" width="700" height="26" fill="#030405" stroke="#181c20" stroke-width="2"/>
+  <text x="260" y="130" fill="#6b7c8e" font-family="monospace" font-size="11" letter-spacing="2">TOP CLEARANCE GAP: 4.8mm // EXTERIOR ACCESS LINE</text>
+
+  <!-- Wooden Frame Edge with Scratches -->
+  <rect x="250" y="166" width="700" height="480" fill="#181e24" stroke="#2c3540" stroke-width="3"/>
+  <rect x="270" y="186" width="660" height="440" fill="#101418" stroke="#1f252d" stroke-width="1.5"/>
+
+  <!-- Metal Mounting Strike Plate -->
+  <rect x="340" y="230" width="520" height="340" rx="6" fill="url(#metalLatch)" stroke="#566370" stroke-width="2"/>
+
+  <!-- Heavy Industrial Screw Heads -->
+  <circle cx="375" cy="265" r="14" fill="#1e2329" stroke="#606d7a" stroke-width="1.5"/>
+  <line x1="367" y1="265" x2="383" y2="265" stroke="#8b99a6" stroke-width="2"/>
+  
+  <circle cx="825" cy="265" r="14" fill="#1e2329" stroke="#606d7a" stroke-width="1.5"/>
+  <line x1="817" y1="265" x2="833" y2="265" stroke="#8b99a6" stroke-width="2"/>
+
+  <circle cx="375" cy="535" r="14" fill="#1e2329" stroke="#606d7a" stroke-width="1.5"/>
+  <line x1="375" y1="527" x2="375" y2="543" stroke="#8b99a6" stroke-width="2"/>
+
+  <circle cx="825" cy="535" r="14" fill="#1e2329" stroke="#606d7a" stroke-width="1.5"/>
+  <line x1="825" y1="527" x2="825" y2="543" stroke="#8b99a6" stroke-width="2"/>
+
+  <!-- Horizontal Slide Channel (The Track) -->
+  <rect x="420" y="360" width="360" height="70" rx="4" fill="#080a0c" stroke="#333d47" stroke-width="2"/>
+
+  <!-- The Heavy Steel Bolt / Latch Bar -->
+  <rect x="490" y="345" width="220" height="100" rx="5" fill="url(#metalLatch)" stroke="#748391" stroke-width="2"/>
+
+  <!-- Latch Knob / Grip -->
+  <rect x="560" y="325" width="80" height="140" rx="8" fill="url(#brassCatch)" stroke="#a1814e" stroke-width="2"/>
+  <circle cx="600" cy="395" r="20" fill="#2d2214" stroke="#d4ab65" stroke-width="1.5"/>
+
+  <!-- HOTSPOT 1 LOCATION TARGET: Upper Beveled Edge of Latch & Frame (x: 48.5%, y: 28.2%) -->
+  <!-- Microscopic White Paint Abrasion / Wire Friction Scratch -->
+  <g id="micro-scratch-area" opacity="0.95">
+    <!-- Fine wire friction striations -->
+    <path d="M 570 215 Q 585 228 595 242" fill="none" stroke="#f0f6fc" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M 574 213 Q 587 225 600 240" fill="none" stroke="#d0d7de" stroke-width="1.4" stroke-dasharray="4,2"/>
+    <path d="M 566 218 Q 580 230 590 245" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+    <circle cx="582" cy="226" r="16" fill="none" stroke="#991b1b" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/>
+  </g>
+
+  <!-- HOTSPOT 2 LOCATION TARGET: Lock Pin / Nylon Residue (x: 55%, y: 52%) -->
+  <!-- Translucent Plastic Polymer Burr Caught in Latch Mechanism -->
+  <g id="polymer-residue-area" opacity="0.95">
+    <path d="M 645 405 L 665 418 L 658 425 Z" fill="#e2e8f0" fill-opacity="0.8" stroke="#38bdf8" stroke-width="1"/>
+    <path d="M 658 412 Q 672 422 668 432" fill="none" stroke="#cbd5e1" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="660" cy="416" r="14" fill="none" stroke="#991b1b" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/>
+  </g>
+
+  <!-- Specimen Serial & Scale Stamp -->
+  <g transform="translate(350, 600)" fill="#718096" font-family="monospace" font-size="11">
+    <text x="0" y="0">EVIDENCE TAG: #407-LATCH // FORENSIC MACROGRAPH</text>
+    <text x="0" y="16">STATUS: LOCKED (ENGAGED FROM EXTERIOR MANIPULATION)</text>
+    <text x="0" y="32">MAGNIFICATION REFERENCE: 10:1 OPTICAL RATIO</text>
+  </g>
+
+  <!-- Scale Bar Ruler (Metric) -->
+  <g transform="translate(730, 595)" stroke="#606f7b" stroke-width="1.5">
+    <line x1="0" y1="10" x2="120" y2="10"/>
+    <line x1="0" y1="2" x2="0" y2="18"/>
+    <line x1="30" y1="5" x2="30" y2="15"/>
+    <line x1="60" y1="2" x2="60" y2="18"/>
+    <line x1="90" y1="5" x2="90" y2="15"/>
+    <line x1="120" y1="2" x2="120" y2="18"/>
+    <text x="45" y="32" fill="#718096" font-family="monospace" font-size="10" stroke="none">10 mm</text>
+  </g>
+
+  <!-- Vignette Lighting Overlay -->
+  <rect width="1200" height="800" fill="url(#vignette)" pointer-events="none"/>
+</svg>

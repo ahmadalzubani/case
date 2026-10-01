@@ -1,0 +1,1 @@
+- [CASE persistence boundary](case-persistence-boundary.md) — treat investigation localStorage as untrusted input and normalize every persisted field before rendering.
